@@ -81,69 +81,131 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.wrap{ height:100%; display:flex; flex-direction:column; }
-.top{
-  background:#fff;
-  border-bottom:1px solid #e5e7eb;
-  padding:14px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+.wrap { height: 100%; display: flex; flex-direction: column; }
+
+.top {
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 10px;
 }
-.name{ font-weight:900; }
-.sub{ font-size:12px; color:#6b7280; margin-top:2px; }
-.msgs{ flex:1; overflow:auto; padding:16px; background:#f6f7fb; }
-.state{ padding: 14px; text-align:center; color:#6b7280; font-size:13px; }
-.empty{ height:100%; display:flex; align-items:center; justify-content:center; color:#6b7280; }
+.name { font-weight: 800; font-size: 14px; }
+.sub { font-size: 11px; color: #6b7280; margin-top: 2px; }
+
+.msgs {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+  background: #f8fafc;
+  scroll-behavior: smooth;
+}
+
+.state { padding: 14px; text-align: center; color: #9ca3af; font-size: 13px; }
+.empty { height: 100%; display: flex; align-items: center; justify-content: center; color: #9ca3af; }
+
 .empty-state {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32px;
+  animation: fadeIn 0.4s ease-out;
 }
+.empty-state p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
 .suggestions {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 15px;
-    width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+  width: 85%;
 }
+
 .suggest-btn {
-    padding: 10px 14px;
-    border-radius: 12px;
-    border: 1px solid #111827;
-    background: transparent;
-    color: #111827;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 500;
-    transition: all 0.2s;
-}
-.suggest-btn:hover {
-    background: #111827;
-    color: #fff;
-}
-.btn{
-  border:none;
-  background:#111827;
-  color:#fff;
-  padding:10px 12px;
-  border-radius:12px;
-  cursor:pointer;
-  font-size:12px;
-}
-.btn.ghost{
-  background:#fff;
-  color:#111827;
-  border:1px solid #e5e7eb;
-}
-.err{
-  padding: 10px 14px;
-  color:#b91c1c;
-  background:#fef2f2;
-  border-bottom:1px solid #fecaca;
+  padding: 11px 16px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #334155;
+  cursor: pointer;
   font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.2s cubic-bezier(.4,0,.2,1);
+  animation: slideInUp 0.35s ease-out both;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+.suggest-btn:nth-child(1) { animation-delay: 0.05s; }
+.suggest-btn:nth-child(2) { animation-delay: 0.12s; }
+.suggest-btn:nth-child(3) { animation-delay: 0.19s; }
+
+.suggest-btn:hover {
+  background: #0f172a;
+  color: #fff;
+  border-color: #0f172a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+}
+.suggest-btn:active {
+  transform: scale(0.97);
+}
+
+.btn {
+  border: none;
+  background: #0f172a;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.btn:hover {
+  background: #1e293b;
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: scale(0.96);
+}
+.btn.ghost {
+  background: #fff;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+}
+.btn.ghost:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.err {
+  padding: 10px 14px;
+  color: #b91c1c;
+  background: #fef2f2;
+  border-bottom: 1px solid #fecaca;
+  font-size: 13px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

@@ -31,55 +31,69 @@ import { chatStore as s } from "@/store/chat.store.js";
 </script>
 
 <style scoped>
-.list{
-  overflow:auto;
-  padding:8px;
+.list {
+  overflow: auto;
+  padding: 6px;
 }
 
-.item{
-  display:flex;
-  gap:10px;
-  padding:10px;
-  border-radius:10px;
-  cursor:pointer;
+.item {
+  display: flex;
+  gap: 8px;
+  padding: 10px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(.4,0,.2,1);
+}
+.item:hover {
+  background: #f1f5f9;
+  transform: translateX(2px);
+}
+.item.active {
+  background: #e0e7ff;
+  box-shadow: inset 3px 0 0 #2563eb;
 }
 
-.item:hover{
-  background:#f3f4f6;
+.avatar {
+  width: 34px;
+  height: 34px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.item:hover .avatar {
+  transform: scale(1.08);
 }
 
-.item.active{
-  background:#e0e7ff;
+.info {
+  flex: 1;
+  min-width: 0;
+}
+.name {
+  font-weight: 600;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.last {
+  font-size: 11px;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
 }
 
-.avatar{
-  width:36px;
-  height:36px;
-  background:#fff;
-  border:1px solid #ddd;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.info{
-  flex:1;
-}
-
-.name{
-  font-weight:600;
-  font-size:13px;
-}
-
-.last{
-  font-size:12px;
-  color:#6b7280;
-}
-
-.empty{
-  text-align:center;
-  padding:20px;
-  color:#888;
+.empty {
+  text-align: center;
+  padding: 24px 12px;
+  color: #94a3b8;
+  font-size: 13px;
 }
 </style>
